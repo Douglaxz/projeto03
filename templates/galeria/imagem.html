@@ -5,7 +5,11 @@
             <section class="conteudo">
                 <section class="imagem">
                     <div class="imagem__conteudo">
-                        <img class="imagem__imagem" src="{% static '/assets/imagens/galeria/'%}{{fotografia.foto}}" >
+                        {%if fotografia.foto == null %}
+                            <img class="card__imagem" src="{% static '/assets/imagens/galeria/semfoto.png'%}" alt="foto">
+                        {%else%}
+                            <img class="card__imagem" src="{{fotografia.foto.url}}" alt="foto">
+                        {%endif%}
                         <div class="imagem__info">
                             <div class="imagem__texto">
                                 <p class="imagem__titulo">{{fotografia.nome}}</p>
