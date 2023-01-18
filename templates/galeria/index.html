@@ -1,6 +1,20 @@
 {%extends 'galeria/base.html'%}
 {%load static%}
 {%block content%}
+<main class="principal">
+    <section class="conteudo">
+        <section class="banner">
+            <img class="banner__imagem" src="{% static '/assets/imagens/banner_loja.png'%}" alt="banner Alura Space">
+        </section>
+        <section class="tags">
+            <p class="tags__titulo">Busque por tags:</p>
+            <ul class="tags__lista">
+                <li class="tags__tag">Carro</li>
+                <li class="tags__tag">Eletrônicos</li>
+                <li class="tags__tag">Celulares</li>
+                <li class="tags__tag">Móveis</li>
+            </ul>
+        </section>
 <section class="galeria">
     <div class="cards">
         <h2 class="cards__titulo">Navegue pela galeria</h2>

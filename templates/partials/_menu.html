@@ -1,42 +1,36 @@
 {%load static%}
 <div class="pagina-inicial">
     <header class="cabecalho">
-        <img src="{% static '/assets/logo/mercadobloqueado_logo.png'%}" alt="Logo do mercado bloqueado" />
-        {%for message in messages%}
-            <div class="alert alert-primary">
-                <p id="message">{{message}}</p>
-            </div>
-        {%endfor%}        
+        <img src="{% static '/assets/logo/mercadobloqueado_logo.png'%}" alt="Logo do mercado bloqueado" />    
         <div class="cabecalho__busca">
             <div class="busca__fundo">
                 <form action="{%url 'buscar'%}">
                     <input class="busca__input" type="text" placeholder="O que você procura?" name="buscar">
                     <button type="submit">
-                        <img class="busca__icone" src="{% static '/assets/ícones/1x/search.png'%}" alt="ícone de search">
+                        <img class="busca__icone" src="{% static '/assets/ícones/1x/search3.png'%}" alt="ícone de search">
                     </button>
                 </form>
             </div>
         </div>
+        <div>
+            <a href="{%url 'index' %}">
+                <img class="busca__icone" src="{% static '/assets/ícones/1x/home1.png'%}" alt="ícone de home">
+            </a>
+        </div>        
+        <div>
+            <a href="{%url 'login'%}">
+                <img class="busca__icone" src="{% static '/assets/ícones/1x/user2.png'%}" alt="ícone de usuarios">
+            </a>
+        </div>
+        <div>
+            <a href="{%url 'cadastro'%}">
+                <img class="busca__icone" src="{% static '/assets/ícones/1x/carrinho.png'%}" alt="ícone de search">
+            </a>
+        </div>     
+        <div>
+            <a href="{% url 'logout' %}">
+                <img class="busca__icone" src="{% static '/assets/ícones/1x/logout1.png'%}" alt="ícone de logout">
+            </a>
+        </div>            
     </header>
-    <main class="principal">
-        <section class="menu-lateral">
-            <nav class="menu-lateral__navegacao">
-                <a href="{%url 'index' %}"><img src="{% static '/assets/ícones/1x/Home - ativo.png'%}"> Home</a>
-                <a href="{%url 'login'%}"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png'%}"> Login</a>
-                <a href="{%url 'cadastro'%}"><img src="{% static '/assets/ícones/1x/Novas - inativo.png'%}"> Cadastro</a>
-                <a href="{% url 'logout' %}"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}"> Logout</a>
-            </nav>
-        </section>
-            <section class="conteudo">
-                <section class="banner">
-                    <img class="banner__imagem" src="{% static '/assets/imagens/banner_loja.png'%}" alt="banner Alura Space">
-                </section>
-                <section class="tags">
-                    <p class="tags__titulo">Busque por tags:</p>
-                    <ul class="tags__lista">
-                        <li class="tags__tag">Nebulosa</li>
-                        <li class="tags__tag">Estrela</li>
-                        <li class="tags__tag">Galáxia</li>
-                        <li class="tags__tag">Planeta</li>
-                    </ul>
-                </section>
+<body>
