@@ -10,10 +10,10 @@ from django.contrib.auth.models import User
 class Fotografia(models.Model):
 
     OPCOES_CATEGORIA = [
-        ("NEBULOSA","Nebulosa"),
-        ("ESTRELA","Estrela"),
-        ("GALÁXIA","Galáxia"),
-        ("PLANETA","Planeta"),
+        ("MÓVEIS","Moveis"),
+        ("CELULARES","Celulares"),
+        ("INFORMÁTICA","Informática"),
+        ("CASA","CASA"),
     ]
 
     nome = models.CharField(max_length=100, null=False, blank="False")
@@ -23,6 +23,7 @@ class Fotografia(models.Model):
     foto = models.ImageField(upload_to="fotos/%Y/%m/%d/", blank=True) 
     publicada = models.BooleanField(default=False)
     data_fotografia = models.DateField(default=datetime.now, blank=False)
+    preco = models.IntegerField(null=False, blank="False",default=0)
     usuario = models.ForeignKey(
         to=User,
         on_delete=models.SET_NULL,
