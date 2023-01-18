@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import auth
 from django.contrib  import messages
 
+
+def usuarios(request):
+    return render(request,"usuarios/usuarios.html")
+
 def login(request):
     form = LoginsForms()
     if request.method == 'POST':
@@ -11,13 +15,11 @@ def login(request):
         if form.is_valid():
             nome = form["nome_login"].value()
             senha = form["senha_login"].value()
-
             usuario = auth.authenticate(
                 request,
                 username = nome,
                 password = senha,
             )
-
             if usuario is not None:
                 auth.login(request, usuario)
                 messages.success(request, f"{nome} Logado com sucesso!")
@@ -25,7 +27,6 @@ def login(request):
             else:
                 messages.error(request, "Erro ao efetuar login!")
                 return redirect('login')
-
     return render(request,"usuarios/login.html",{"form":form})
 
 def cadastro(request):
@@ -36,11 +37,9 @@ def cadastro(request):
             nome = form["nome_cadastro"].value()
             email = form["email_cadastro"].value()
             senha = form["senha_1"].value()
-
             if User.objects.filter(username=nome).exists():
                 messages.error(request, "Usuário já existe !")
-                return redirect('cadastro')
-            
+                return redirect('cadastro')          
             usuario = User.objects.create_user(
                 username=nome,
                 email=email,
@@ -51,7 +50,6 @@ def cadastro(request):
             return redirect('login')
     return render(request,"usuarios/cadastro.html",{"form":form})
     
-
 def logout(request):
     auth.logout(request)            
     messages.success(request, "Logout efetuado com sucesso!")
