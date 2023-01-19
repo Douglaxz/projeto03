@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
-from usuarios.forms import LoginsForms,CadastroForms
+from usuarios.forms import LoginsForms, CadastroForms
 from django.contrib.auth.models import User
 from django.contrib.auth.models import auth
-from django.contrib  import messages
+from django.contrib import messages
 
 
 def usuarios(request):
-    return render(request,"usuarios/usuarios.html")
+    return render(request, "usuarios/usuarios.html")
+
 
 def login(request):
     form = LoginsForms()
@@ -17,8 +18,8 @@ def login(request):
             senha = form["senha_login"].value()
             usuario = auth.authenticate(
                 request,
-                username = nome,
-                password = senha,
+                username=nome,
+                password=senha,
             )
             if usuario is not None:
                 auth.login(request, usuario)
@@ -27,7 +28,8 @@ def login(request):
             else:
                 messages.error(request, "Erro ao efetuar login!")
                 return redirect('login')
-    return render(request,"usuarios/login.html",{"form":form})
+    return render(request, "usuarios/login.html", {"form": form})
+
 
 def cadastro(request):
     form = CadastroForms()
@@ -39,7 +41,7 @@ def cadastro(request):
             senha = form["senha_1"].value()
             if User.objects.filter(username=nome).exists():
                 messages.error(request, "Usuário já existe !")
-                return redirect('cadastro')          
+                return redirect('cadastro')
             usuario = User.objects.create_user(
                 username=nome,
                 email=email,
@@ -48,10 +50,10 @@ def cadastro(request):
             usuario.save
             messages.success(request, f"Usuário {nome} criado com sucesso!")
             return redirect('login')
-    return render(request,"usuarios/cadastro.html",{"form":form})
-    
+    return render(request, "usuarios/cadastro.html", {"form": form})
+
+
 def logout(request):
-    auth.logout(request)            
+    auth.logout(request)
     messages.success(request, "Logout efetuado com sucesso!")
     return redirect('login')
-

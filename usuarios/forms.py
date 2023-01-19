@@ -1,80 +1,83 @@
 from django import forms
 
+
 class LoginsForms(forms.Form):
     nome_login = forms.CharField(
-        label = "Login:",
+        label="Login:",
         required=True,
         max_length=100,
         widget=forms.TextInput(
             attrs={
-                "class":"form-control",
-                "placeholder":"Ex.: João Silva"
+                "class": "form-control",
+                "placeholder": "Ex.: João Silva"
             }
-        )        
+        )
     )
-    senha_login= forms.CharField(
-        label = "Senha:",
+    senha_login = forms.CharField(
+        label="Senha:",
         required=True,
         max_length=70,
         widget=forms.PasswordInput(
             attrs={
-                "class":"form-control",
-                "placeholder":"Digite sua senha"
+                "class": "form-control",
+                "placeholder": "Digite sua senha"
             }
         )
     )
 
+
 class CadastroForms(forms.Form):
-    nome_cadastro= forms.CharField(
-        label = "Nome de Cadastro:",
+    nome_cadastro = forms.CharField(
+        label="Nome de Cadastro:",
         required=True,
         max_length=100,
         widget=forms.TextInput(
             attrs={
-                "class":"form-control",
-                "placeholder":"Ex.: João Silva"
+                "class": "form-control",
+                "placeholder": "Ex.: João Silva"
             }
-        )        
+        )
     )
-    email_cadastro= forms.EmailField(
-        label = "Email de Cadastro:",
+    email_cadastro = forms.EmailField(
+        label="Email de Cadastro:",
         required=True,
         max_length=100,
         widget=forms.EmailInput(
             attrs={
-                "class":"form-control",
-                "placeholder":"Ex.: joaosilva@xpto.com"
+                "class": "form-control",
+                "placeholder": "Ex.: joaosilva@xpto.com"
             })
     )
-    senha_1= forms.CharField(
-        label = "Senha:",
+    senha_1 = forms.CharField(
+        label="Senha:",
         required=True,
         max_length=70,
         widget=forms.PasswordInput(
             attrs={
-                "class":"form-control",
-                "placeholder":"Digite sua senha"
+                "class": "form-control",
+                "placeholder": "Digite sua senha"
             }
         )
-    )    
-    senha_2= forms.CharField(
-        label = "Confirme Senha:",
+    )
+    senha_2 = forms.CharField(
+        label="Confirme Senha:",
         required=True,
         max_length=70,
         widget=forms.PasswordInput(
             attrs={
-                "class":"form-control",
-                "placeholder":"Digite sua senha novamente"
+                "class": "form-control",
+                "placeholder": "Digite sua senha novamente"
             }
         )
-    ) 
+    )
 
     def clean_nome_cadastro(self):
         nome = self.cleaned_data.get("nome_cadastro")
         if nome:
             nome = nome.strip()
             if " " in nome:
-                raise forms.ValidationError("Espaços não são permitidos nesse campo")
+                raise forms.ValidationError(
+                    "Espaços não são permitidos nesse campo")
             else:
                 return nome
 
