@@ -34,8 +34,28 @@ def anuncio(request):
     return render(request,'galeria/anuncio.html',{"anuncios":anuncios})
 
 def visualizar_anuncio(request, foto_id):
-    anuncio = Fotografia.objects.order_by("-data_fotografia").filter(id=foto_id).first()
-    form = CadastroForms(request.POST, instance=anuncio)
+    anuncio = Fotografia.objects.order_by("-data_fotografia").filter(id=foto_id).first()    
+    return render(request,'galeria/visualizar_anuncio.html',{"anuncio":anuncio})
+
+def alterar_anuncio(request,foto_id):
+    anuncio = Fotografia.objects.order_by("-data_fotografia").filter(id=foto_id).first()    
+
+    if "nome" in request.GET:
+        anuncio.nome = request.GET["nome"]
+    if "legenda" in request.GET:
+        anuncio.legenda = request.GET["legenda"]        
+    if "descricao" in request.GET:
+        anuncio.descricao = request.GET["descricao"] 
+    if "categoria" in request.GET:
+        anuncio.categoria = request.GET["categoria"]               
+    if "preco" in request.GET:
+        anuncio.preco = request.GET["preco"]                       
+    if "publicada" in request.GET:
+        anuncio.publicada = request.GET["publicada"]
+    if "usuario_id" in request.GET:
+        anuncio.usuario_id = request.GET["usuario_id"]                     
+    anuncio.save()
     
-    #return render(request,'galeria/visualizar_anuncio.html',{"anuncio":anuncio})
-    return render(request,'galeria/visualizar_anuncio.html',{"form":form})
+
+    return redirect('visualizar_anuncio',foto_id)
+    

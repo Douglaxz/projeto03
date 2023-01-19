@@ -4,52 +4,46 @@
 <main class="principal">
     <section class="conteudo">
         <section class="banner">
-            <img class="banner__imagem" src="{% static '/assets/imagens/banner_loja.png'%}" alt="banner Alura Space">
+            <img class="banner__imagem" src="{% static '/assets/imagens/banner_loja.png'%}" alt="banner loja">
         </section>
-        <section class="tags">
-            <p class="tags__titulo">Busque por tags:</p>
-            <ul class="tags__lista">
-                <li class="tags__tag">Carro</li>
-                <li class="tags__tag">Eletrônicos</li>
-                <li class="tags__tag">Celulares</li>
-                <li class="tags__tag">Móveis</li>
-            </ul>
-        </section>
-<section class="galeria">
-    <div class="cards">
-        <h2 class="cards__titulo">Navegue pela galeria</h2>
-        <ul class="cards__lista">
-            {%if cards%}
-            {%for fotografia in cards%}        
-            <li class="card">
-                <a href="{%url 'imagem' fotografia.id %}">
-                    {%if fotografia.foto == null or fotografia.foto is None %}
-                        <img class="card__imagem" src="{% static '/assets/imagens/galeria/semfoto.png'%}" alt="foto">
+    
+        <section class="galeria">
+            <div class="cards">
+                <h2 class="cards__titulo">Produtos para troca ou venda</h2>
+                <ul class="cards__lista">
+                    {%if cards%}
+                    {%for fotografia in cards%}        
+                    <li class="card">
+                        <a href="{%url 'imagem' fotografia.id %}">
+                            {%if fotografia.foto == null or fotografia.foto is None %}
+                                <img class="card__imagem" src="{% static '/assets/imagens/galeria/semfoto.png'%}" alt="foto">
+                            {%else%}
+                                <img class="card__imagem" src="{{fotografia.foto.url}}" alt="foto">
+                            {%endif%}
+                        </a>
+                        <div class="card__info">
+                            <p class="card__titulo">{{fotografia.nome}}</p>
+                            <div class="card__texto">
+                                <p class="card__descricao">{{fotografia.legenda}}</p>
+                            </div>                    
+                            <div class="card__texto">
+                                <p class="card__descricao">{{fotografia.descricao}}</p>
+                            </div>
+                            <div class="card__texto">
+                                <p class="card__descricao">{{fotografia.preco}}</p>
+                            </div>                    
+                        </div>
+                    </li>
+                    {%endfor%}
                     {%else%}
-                        <img class="card__imagem" src="{{fotografia.foto.url}}" alt="foto">
+                        <div class="imagem__texto">
+                            <p>Fotografias não encontradas</p>
+                        </div>            
                     {%endif%}
-                </a>
-                <span class="card__tag">Estrelas</span>
-                <div class="card__info">
-                    <p class="card__titulo">{{fotografia.nome}}</p>
-                    <div class="card__texto">
-                        <p class="card__descricao">{{fotografia.legenda}}</p>
-                        <span>
-                            <img src="{% static '/assets/ícones/1x/favorite_outline.png'%}" alt="ícone de coração">
-                        </span>
-                    </div>
-                </div>
-            </li>
-            {%endfor%}
-            {%else%}
-                <div class="imagem__texto">
-                    <p>Fotografias não encontradas</p>
-                </div>            
-            {%endif%}
-         </ul>
-    </div>
-</section>
-</section>
+                </ul>
+            </div>
+        </section>
+    </section>
 </main>
 </div>
 {%endblock%}

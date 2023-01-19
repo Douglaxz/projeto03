@@ -2,12 +2,96 @@
 {%load static%}
 {%block content%}
 
-<h2 class="cards__titulo">|{{anuncio.foto}}|</h2>
+<h2 class="cards__titulo">Detalhes do anúncio</h2>
 
-<main class="principal">
-<section class="galeria">
-
-</section>
-</main>
+<div class="teladivcentral">
+    <section class="galeria">
+        <form action="{%url 'alterar_anuncio' anuncio.id%}">
+        {% csrf_token %}
+        <div class="row"> 
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <label style="color:#000000; margin-bottom: 5px;" for="{{field.id_for_label}}">Nome</label>
+            </div>
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                 <input type="text" value="{{anuncio.nome}}" class="form-control" name="nome" id="nome">
+            </div>
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <label style="color:#000000; margin-bottom: 5px;" for="{{field.id_for_label}}">Legenda:</label>
+            </div>
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <input type="text" value="{{anuncio.legenda}}" class="form-control" name="legenda" id="legenda">
+            </div>
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <label style="color:#000000; margin-bottom: 5px;" for="{{field.id_for_label}}">Descrição</label>
+            </div>
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <input type="text" value="{{anuncio.descricao}}" class="form-control" name="descricao" id="descricao">
+            </div>
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <label style="color:#000000; margin-bottom: 5px;" for="{{field.id_for_label}}">Categoria:</label>
+            </div>
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left" >
+                <select name="select" class="form-control" name="categoria" id="categoria">
+                {%if anuncio.categoria == "MÓVEIS" %}
+                    <option value="MÓVEIS" selected>Móveis</option>
+                {%else%}
+                    <option value="MÓVEIS">Móveis</option>
+                {%endif%}
+                {%if anuncio.categoria == "CELULAR" %}
+                    <option value="CELULAR" selected>Celular</option>
+                {%else%}
+                    <option value="CELULAR">Celular</option>
+                {%endif%}                        
+                {%if anuncio.categoria == "INFORMÁTICA" %}
+                    <option value="INFORMÁTICA" selected>Informática</option>
+                {%else%}
+                    <option value="INFORMÁTICA">Informática</option>
+                {%endif%}   
+                {%if anuncio.categoria == "CELULAR" %}
+                    <option value="CASA" selected>Casa</option>
+                {%else%}
+                    <option value="CASA">Casa</option>
+                {%endif%}                                                   
+                </select>
+            </div>        
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <label style="color:#000000; margin-bottom: 5px;" for="{{field.id_for_label}}">Publicada:</label>
+            </div>      
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <select name="select" class="form-control" name="publicada" id="publicada">
+                {%if anuncio.publicada == 0 %}
+                    <option value="0" selected>Não</option>
+                {%else%}
+                    <option value="0">Não</option>
+                {%endif%}
+                {%if anuncio.publicada == 1 %}
+                    <option value="1" selected>Sim</option>
+                {%else%}
+                    <option value="1">Sim</option>
+                {%endif%}                                                                        
+                </select>
+            </div> 
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <label style="color:#000000; margin-bottom: 5px;" for="{{field.id_for_label}}">Preço:</label>
+            </div>                  
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <input type="text" value="{{anuncio.preco}}" class="form-control" name="preco" id="preco">
+            </div>
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <label style="color:#000000; margin-bottom: 5px;" for="{{field.id_for_label}}">Usuario id:</label>
+            </div>                  
+            <div class="col-12 col-lg-12" style="margin-bottom: 10px;" align="left">
+                <input type="text" value="{{anuncio.usuario_id}}" class="form-control" name="usuario_id" id="usuario_id">
+            </div>                                                                                                                           
+            <div class="col-12 text-center">
+                <button class="btn btn-success col-12" style="padding: top 5px;" type="submit">Alterar</button>
+            </div>
+            <a href="{%url 'anuncio' %}">
+                <button class="btn btn-danger col-12" style="padding: top 5px;" type="button">Voltar</button>
+            </a>       
+        </form>
+     
+    </section>
+</div>
 </div>
 {%endblock%}
