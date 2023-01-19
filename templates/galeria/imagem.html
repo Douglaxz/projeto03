@@ -1,26 +1,37 @@
 {%extends 'galeria/base.html'%}
 {%load static%}
 {%block content%}
-
-            <section class="conteudo">
-                <section class="imagem">
-                    <div class="imagem__conteudo">
-                        {%if fotografia.foto == null %}
-                            <img class="card__imagem" src="{% static '/assets/imagens/galeria/semfoto.png'%}" alt="foto">
-                        {%else%}
-                            <img class="card__imagem" src="{{fotografia.foto.url}}" alt="foto">
-                        {%endif%}
-                        <div class="imagem__info">
-                            <div class="imagem__texto">
-                                <p class="imagem__titulo">{{fotografia.nome}}</p>
-                                <p class="imagem__descricao">{{fotografia.legenda}}</p>
-                                <p class="imagem__texto">{{fotografia.descricao}}</p>
+<main class="principal">
+    <section class="conteudo">
+        <section class="galeria">
+            <div class="cards">
+                <ul class="cards__lista">   
+                    <li class="card">
+                            {%if fotografia.foto == null or fotografia.foto is None %}
+                                <img class="card__imagem" src="{% static '/assets/imagens/galeria/semfoto.png'%}" alt="foto">
+                            {%else%}
+                                <img class="card__imagem" src="{{fotografia.foto.url}}" alt="foto">
+                            {%endif%}
+                        <div class="card__info">
+                            <p class="card__titulo">{{fotografia.nome}}</p>
+                            <div class="card__texto">
+                                <p class="card__descricao">{{fotografia.legenda}}</p>
+                            </div>                    
+                            <div class="card__texto">
+                                <p class="card__descricao">{{fotografia.descricao}}</p>
                             </div>
+                            <div class="card__texto">
+                                <p class="card__descricao">{{fotografia.preco}}</p>
+                            </div>                    
                         </div>
-                    </div>
-                </section>
-            </section>
-        </main>
-    </div>
+                        <a href="{%url 'index' %}">
+                            <button class="btn btn-danger col-12" style="padding: top 5px;" type="button">Voltar</button>
+                        </a>                           
+                    </li>
+                </ul>
+            </div>
 
+        </section>
+    </section>
+</main>
 {%endblock%}
