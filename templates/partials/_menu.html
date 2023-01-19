@@ -26,7 +26,12 @@
             <a href="{%url 'cadastro'%}">
                 <img class="busca__icone" src="{% static '/assets/ícones/1x/carrinho.png'%}" alt="ícone de search">
             </a>
-        </div>     
+        </div>
+        <div>
+            <a href="{% url 'anuncio' %}">
+                <img class="busca__icone" src="{% static '/assets/ícones/1x/anuncio.png'%}" alt="ícone de anuncio">
+            </a>
+        </div>        
         <div>
             <a href="{% url 'logout' %}">
                 <img class="busca__icone" src="{% static '/assets/ícones/1x/logout1.png'%}" alt="ícone de logout">

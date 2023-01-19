@@ -1,0 +1,32 @@
+{%extends 'galeria/base.html'%}
+{%load static%}
+{%block content%}
+
+<h2 class="cards__titulo">Meus anúncios</h2>
+
+<main class="principal">
+<section class="galeria">
+    {%for anuncio in anuncios%}        
+    <li class="card">
+        <a href="{%url 'visualizar_anuncio' anuncio.id %}">
+            {%if anuncio.foto == null or anuncio.foto is None %}
+                <img class="card__imagem" src="{% static '/assets/imagens/galeria/semfoto.png'%}" alt="foto">
+            {%else%}
+                <img class="card__imagem" src="{{anuncio.foto.url}}" alt="foto">
+            {%endif%}
+        </a>        
+        <div class="card__info">
+            <p class="card__titulo"><font color="black">{{anuncio.nome}}</font></p>
+            <div class="card__texto">
+                <p class="card__descricao"><font color="black">{{anuncio.legenda}}</font></p>
+                <span>
+                    <img src="{% static '/assets/ícones/1x/favorite_outline.png'%}" alt="ícone de coração">
+                </span>
+            </div>
+        </div>
+    </li>
+    {%endfor%}
+</section>
+</main>
+</div>
+{%endblock%}

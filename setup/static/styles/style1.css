@@ -36,7 +36,6 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
 }
 
 ol, ul {
@@ -66,7 +65,6 @@ table {
 }
 
 .banner__titulo {
-    color: #FFFFFF;
     font-size: 40px;
     width: 350px;
     line-height: 50px;
@@ -117,7 +115,7 @@ table {
 }
 
 .cards__titulo {
-    color: #7B78E5;
+    color: black;
     font-size: 2rem;
     line-height: 3rem;
     margin-bottom: 1.5rem;
@@ -133,7 +131,6 @@ table {
 .card {
     border-radius: 10px;
     box-shadow: 0px 10px 10px #00000050;
-    color: #FFFFFF;
     margin-bottom: 1.5rem;
     position: relative;
     width: 450px;
@@ -221,14 +218,12 @@ table {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: #FFFFFF;
     margin-top: 0.5rem;
 }
 
 .imagem__titulo {
     font-weight: bold;
     line-height: 2rem;
-    color: #FFFFFF;
 }
 
 .imagem__texto {
@@ -310,7 +305,6 @@ table {
     align-items: center;
     font-size: 20px;
     text-decoration: none;
-    color: #FFFFFF;
     background-color: #082D5C;
     width: 100%;
     height: 100%;
@@ -422,4 +416,26 @@ table {
     display: table;
     align-items: center;    
     padding: 120px 450px;
+}
+
+.titulocentral {
+    border-radius: 10px;
+    width: 100%;
+    height: 100px;
+    text-align: left;
+    vertical-align: middle;
+
+}
+
+.card_anuncio {
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px #00000050;
+    margin-bottom: 1.5rem;
+    position: relative;
+    width: 450px;
+}
+
+.card__imagem_anuncio {
+    width: 250px;
+    border-radius: 10px 10px 0 0;
 }
