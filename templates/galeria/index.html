@@ -6,7 +6,6 @@
         <section class="banner">
             <img class="banner__imagem" src="{% static '/assets/imagens/banner_loja.png'%}" alt="banner loja">
         </section>
-    
         <section class="galeria">
             <div class="cards">
                 <h2 class="cards__titulo">Produtos para troca ou venda</h2>
@@ -30,7 +29,7 @@
                                 <p class="card__descricao">{{fotografia.descricao}}</p>
                             </div>
                             <div class="card__texto">
-                                <p class="card__descricao">{{fotografia.preco}}</p>
+                                <p class="card__descricao">{{int(fotografia.preco)}}</p>
                             </div>                    
                         </div>
                     </li>
