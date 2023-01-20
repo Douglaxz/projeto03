@@ -1,6 +1,7 @@
 from django.urls import path
 from galeria.views import index, imagem, buscar, anuncio, visualizar_anuncio,alterar_anuncio
 
+# rotas do app usuário para ser interligado com as demais rotas do projeto, cada linha é um link
 urlpatterns = [
     path('',index, name='index'),
     path('imagem/<int:foto_id>', imagem, name='imagem'),

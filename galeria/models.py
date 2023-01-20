@@ -1,7 +1,5 @@
 from django.db import models
-
 from datetime import datetime
-
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -9,6 +7,7 @@ from django.contrib.auth.models import User
 # construção da tabela em sql lite
 class Fotografia(models.Model):
 
+    # campo do select com essas opções
     OPCOES_CATEGORIA = [
         ("MÓVEIS","Moveis"),
         ("CELULARES","Celulares"),
@@ -24,6 +23,7 @@ class Fotografia(models.Model):
     publicada = models.BooleanField(default=False)
     data_fotografia = models.DateField(default=datetime.now, blank=False)
     preco = models.IntegerField(null=False, blank="False",default=0)
+    # vinculação com a tabela usuários
     usuario = models.ForeignKey(
         to=User,
         on_delete=models.SET_NULL,
