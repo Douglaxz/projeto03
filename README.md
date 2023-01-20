@@ -26,6 +26,8 @@ No futuro deverá ser instalado as seguintes funcionalidades:
 - Carrinho de compras para compra de mais de 1 item
 
 # Colaboradores
+-
 
 # Última Atualização
+20/01/2023
 

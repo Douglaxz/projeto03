@@ -1,6 +1,8 @@
 from django import forms
 
 
+
+#criação do formulário de login do usuário
 class LoginsForms(forms.Form):
     nome_login = forms.CharField(
         label="Login:",
@@ -25,7 +27,7 @@ class LoginsForms(forms.Form):
         )
     )
 
-
+#criação do formulário de cadastro do usuário
 class CadastroForms(forms.Form):
     nome_cadastro = forms.CharField(
         label="Nome de Cadastro:",

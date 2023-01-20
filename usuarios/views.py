@@ -5,10 +5,11 @@ from django.contrib.auth.models import auth
 from django.contrib import messages
 
 
+#criação de rota do usuário
 def usuarios(request):
     return render(request, "usuarios/usuarios.html")
 
-
+#criação da rota login
 def login(request):
     form = LoginsForms()
     if request.method == 'POST':
@@ -30,7 +31,7 @@ def login(request):
                 return redirect('login')
     return render(request, "usuarios/login.html", {"form": form})
 
-
+#criação de rota de cadastro
 def cadastro(request):
     form = CadastroForms()
     if request.method == 'POST':
@@ -52,7 +53,7 @@ def cadastro(request):
             return redirect('login')
     return render(request, "usuarios/cadastro.html", {"form": form})
 
-
+#criação de rota do logout
 def logout(request):
     auth.logout(request)
     messages.success(request, "Logout efetuado com sucesso!")
